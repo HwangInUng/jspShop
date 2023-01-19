@@ -16,6 +16,7 @@ public class ProductDAO {
 	public int insert(Product product) throws ProductException{
 		int result = 0;
 		result = session.insert("Product.insert", product);
+		
 		if(result < 1) {
 			throw new ProductException("상품 등록실패");
 		}

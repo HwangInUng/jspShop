@@ -4,6 +4,6 @@
 	
 	<insert id="insert" parameterType="Product">
 		insert into product(category_idx, product_name, brand, price, discount, detail)
-		vaules(#{category.category_idx}, #{product_name}, #{brand}, #{price}, #{discount}, #{detail});
+		vaules(#{category.category_idx}, #{product_name}, #{brand}, #{price}, #{discount}, #{detail})
 	</insert>
 </mapper>

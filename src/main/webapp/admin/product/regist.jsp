@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.jspshop.domain.Psize"%>
 <%@page import="com.jspshop.domain.Category"%>
 <%@page import="com.jspshop.domain.Product"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
@@ -21,7 +23,8 @@
 	ProductDAO productDAO = new ProductDAO();
 	ColorDAO colorDAO = new ColorDAO();
 	PsizeDAO psizeDAO = new PsizeDAO();
-
+	
+	//upload 객체를 만드는 공장
 	DiskFileItemFactory factory = new DiskFileItemFactory();%>
 
 <%
@@ -32,8 +35,9 @@ String path = application.getRealPath("/data/");
 
 factory.setSizeThreshold(maxSize);
 factory.setRepository(new File(path));
-factory.setDefaultCharset("utf-8");
+factory.setDefaultCharset("utf-8"); //request.setCharset(); 대체하는 메서드
 
+//멀티파트 요청을 받을 객체 생성
 ServletFileUpload upload = new ServletFileUpload(factory);
 
 List<FileItem> itemList = upload.parseRequest(request);
@@ -79,6 +83,7 @@ for (FileItem item : itemList) {
 		item.write(new File(path + time + "." + ext));
 	}
 }
+
 System.out.println("파라미터를 얻은 DTO :" + product);
 
 //session 얻기

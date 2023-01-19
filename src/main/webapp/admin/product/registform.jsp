@@ -249,11 +249,11 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 			flag = true; //unmount()를 실행하는 논리값
 			$(e.target).parent().parent().remove();
 
-			let index = fileList.indexOf(file);
+			let index = fileList.indexOf(file); //객체(인스턴스)의 주소값을 비교
 			fileList.splice(index ,1);
 		}
 
-		// 선택한 이미지 생성
+		// 선택한 이미지 생성(리액트 컴포넌트)
 		function ImgBox(props){
 			return (
 					<div className={"col-sm-2"}>
@@ -263,6 +263,27 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 						<img src={props.src} width="100px"/>
 					</div>
 			)
+		}
+
+		// 선택한 파일 미리보기
+		function previewImg(){
+			//리액트 컴포넌트를 누적할 배열
+			let tag = [];
+
+			for(let i = 0; i < fileList.length; i++){
+				let reader = new FileReader();
+				//파일을 읽어드리기 시작
+				reader.onload = function(e){
+					console.log(fileList[i]);
+					//리액트 컴포넌트 누적
+					tag.push(<ImgBox key={i} src={e.target.result} file={fileList[i]}/>); //파일 객체를 넘김
+					if(i == fileList.length-1){
+						//루트에 랜더링 해주는 메서드(쌓여있는 배열 전체를 한번만 넘겨야함)
+						root.render(tag);
+					}
+				}
+				reader.readAsDataURL(fileList[i]);
+			}
 		}
 
 		// 카테고리 옵션 생성
@@ -290,24 +311,6 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 				}
 			});
 		}
-		
-		// 선택한 파일 미리보기
-		function previewImg(){
-			let tag = [];
-
-			for(let i = 0; i < fileList.length; i++){
-				let reader = new FileReader();
-
-				reader.onload = function(e){
-					console.log(fileList[i]);
-					tag.push(<ImgBox key={i} src={e.target.result} file={fileList[i]}/>);
-					if(i == fileList.length-1){
-						root.render(tag);
-					}
-				}
-				reader.readAsDataURL(fileList[i]);
-			}
-		}
 
 		// onload
 		$(function() {
@@ -325,6 +328,7 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 
 				fileList = [];
 				for(let i = 0; i < this.files.length; i++){
+					//readonly 배열에서 객체(파일)가 하나씩 저장
 					fileList.push(this.files[i]);
 				}
 				previewImg();
