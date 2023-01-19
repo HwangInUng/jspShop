@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%-- <%@ include file="/admin/inc/logincheck.jsp" %> --%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -642,5 +643,9 @@
 
 <!-- Footer Link -->
 <%@ include file="/admin/inc/footer_link.jsp"%>
+
+<script type="text/javascript">
+	
+</script>
 </body>
 </html>

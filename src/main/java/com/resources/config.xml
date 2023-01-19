@@ -5,6 +5,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.jspshop.domain.Admin" alias="Admin" />
+		<typeAlias type="com.jspshop.domain.Category" alias="Category" />
+		<typeAlias type="com.jspshop.domain.Product" alias="Product" />
+		<typeAlias type="com.jspshop.domain.Color" alias="Color" />
+		<typeAlias type="com.jspshop.domain.Psize" alias="Psize" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -16,5 +20,8 @@
 	</environments>
 	<mappers>
 		<mapper resource="com/resources/AdminMapper.xml"/>
+		<mapper resource="com/resources/CategoryMapper.xml"/>
+		<mapper resource="com/resources/ProductMapper.xml"/>
+		<mapper resource="com/resources/ColorMapper.xml"/>
 	</mappers>
 </configuration>
