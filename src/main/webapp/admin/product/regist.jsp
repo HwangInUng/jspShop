@@ -40,7 +40,7 @@ factory.setDefaultCharset("utf-8"); //request.setCharset(); 대체하는 메서�
 //멀티파트 요청을 받을 객체 생성
 ServletFileUpload upload = new ServletFileUpload(factory);
 
-List<FileItem> itemList = upload.parseRequest(request);
+List<FileItem> itemList = upload.parseRequest(request); //
 
 // empty DTO 생성
 Product product = new Product();
@@ -95,7 +95,7 @@ colorDAO.setSession(sqlSession);
 psizeDAO.setSession(sqlSession);
 
 try {
-	productDAO.insert(null);
+	productDAO.insert(product);
 	colorDAO.insert(null);
 	psizeDAO.insert(null);
 

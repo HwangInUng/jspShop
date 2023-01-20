@@ -4,4 +4,8 @@
 	<select id="selectAll" resultType="Category">
 		select category_idx, category_name from category
 	</select>
+	
+	<select id="selectName" resultType="Category" parameterType="int">
+		select * from category where category_idx=#{category_idx}
+	</select>
 </mapper>

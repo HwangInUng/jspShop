@@ -158,6 +158,7 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 									
 										<div class="card-footer">
 											<button type="button" class="btn btn-dark" id="regist">등록</button>
+											<button type="button" class="btn btn-dark" id="list">목록</button>
 										</div>
 									</form>
 									</div>
@@ -206,31 +207,44 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 			formData.append("detail", $("#detail").val());
 
 			// 사이즈 데이터 쌓기
-			for(let i = 0; i < $("input[name='size']").length; i++){
-				if($("input[name='size']")[i].checked == true){
-					formData.append("size", $($("input[name='size']")[i]).val());
-				}
-			}
-			// 색상 데이터 쌓기
-			for(let i = 0; i < $("input[name='color']").length; i++){
-				if($("input[name='color']")[i].checked == true){
-					formData.append("color", $($("input[name='color']")[i]).val());
-				}
-			}
 
+			//for(let i = 0; i < $("input[name='size']").length; i++){
+			//	if($("input[name='size']")[i].checked == true){
+			//		formData.append("size", $($("input[name='size']")[i]).val());
+			//	}
+			//}
+			let sizeCheckedArray = [];
+			$.each($("input[name='size']:checked"), function(){
+				//$(this)는 each문 내의 현재 객체 자신을가르킴
+				sizeCheckedArray.push($(this).val());
+			});
+			formData.append("size[]", sizeCheckedArray);
+
+			// 색상 데이터 쌓기
+			//for(let i = 0; i < $("input[name='color']").length; i++){
+			//	if($("input[name='color']")[i].checked == true){
+			//		formData.append("color", $($("input[name='color']")[i]).val());
+			//	}
+			//}
+			let colorCheckedArray = [];
+			$.each($("input[name='color']:checked"), function(){
+				//$(this)는 each문 내의 현재 객체 자신을가르킴
+				colorCheckedArray.push($(this).val());
+			});
+			formData.append("color[]", colorCheckedArray);
 
 			for(let i = 0; i < fileList.length; i++){
 				formData.append("file", fileList[i]);
 			}
 
 			$.ajax({
-				url: "/admin/product/regist.jsp",
+				url: "/admin/product/regist2.jsp",
 				type: "POST",
 				processData: false,
 				contentType: false,
 				data: formData,
 				success: function(result, status, xhr){
-					alert("상품 등록완료");
+					alert(result);
 				}				
 			});
 		}
@@ -321,6 +335,9 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 
 			$("#regist").on("click", function(){
 				regist();
+			});
+			$("#list").on("click", function(){
+				location.href="/admin/product/list.jsp";
 			});
 			
 			$("#file").on("change", function(){

@@ -12,11 +12,6 @@
 
 	Gson gson = new Gson();
 	String result = gson.toJson(list);
-	
-	
-	System.out.println("-------------------------------------");
-	System.out.println("조회한 카테고리의 상태는?" + result);
-	System.out.println("-------------------------------------");
-	
+
 	out.print(result);
 %>

@@ -9,6 +9,7 @@
 		<typeAlias type="com.jspshop.domain.Product" alias="Product" />
 		<typeAlias type="com.jspshop.domain.Color" alias="Color" />
 		<typeAlias type="com.jspshop.domain.Psize" alias="Psize" />
+		<typeAlias type="com.jspshop.domain.Pimg" alias="Pimg" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -23,5 +24,7 @@
 		<mapper resource="com/resources/CategoryMapper.xml"/>
 		<mapper resource="com/resources/ProductMapper.xml"/>
 		<mapper resource="com/resources/ColorMapper.xml"/>
+		<mapper resource="com/resources/PsizeMapper.xml"/>
+		<mapper resource="com/resources/PimgMapper.xml"/>
 	</mappers>
 </configuration>

@@ -14,7 +14,7 @@ create table product(
 	, constraint fk_category_product foreign key (category_idx) references category(category_idx)
 )default character set utf8;
 
-create table product_img(
+create table pimg(
 	pimg_idx int primary key auto_increment
 	, product_idx int
 	, filename varchar(30)

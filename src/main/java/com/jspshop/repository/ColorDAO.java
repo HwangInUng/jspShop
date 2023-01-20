@@ -1,5 +1,7 @@
 package com.jspshop.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.jspshop.domain.Color;
@@ -12,12 +14,11 @@ public class ColorDAO {
 		this.session = session;
 	}
 	
-	public int insert(Color color) throws ColorException{
+	public void insert(List<Color> list) throws ColorException{
 		int result = 0;
-		result = session.insert("Color.insert", color);
+		result = session.insert("Color.insert", list);
 		if(result < 1) {
 			throw new ColorException("색상 등록실패");
 		}
-		return result;
 	}
 }
