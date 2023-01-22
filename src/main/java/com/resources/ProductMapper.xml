@@ -22,7 +22,12 @@
 		</selectKey>
 	</insert>
 	
-	<select id="selectAll" resultMap="productMap">
-		select * from product order by product_idx desc
+	<select id="selectAll" resultMap="productMap" parameterType="java.util.Map">
+		select * from product
+			<!--검색내용이 있는 경우에만 실행 -->
+			<if test="keyword != null">
+				where ${category} like '%${keyword}%'
+			</if>
+		order by product_idx desc
 	</select>
 </mapper>

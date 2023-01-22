@@ -23,7 +23,7 @@
 	map.put("category", category);
 	map.put("keyword", keyword);
 	
-	List<Product> list = productDAO.selectAll();
+	List<Product> list = productDAO.selectAll(map);
 	pm.init(list, request);
 %>
 
@@ -84,24 +84,25 @@
 							<div class="card">
               <div class="card-header">
                 <h3 class="card-title">전체 상품수 : <%=list.size() %>개</h3>
-
+								
+								<!-- 검색 영역 -->
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 300px;">
-                  	<select class="form-control float-right" name="category">
+                  	<select class="form-control float-right" id="category">
                   		<option value="0">선택</option>
-                  		<option value="catogory">카테고리</option>
                   		<option value="product_name">상품명</option>
                   		<option value="brand">브랜드</option>
                   	</select>
-                    <input type="text" name="keyword" class="form-control float-right" placeholder="Search">
+                    <input type="text" id="keyword" class="form-control float-right" placeholder="Search">
 
                     <div class="input-group-append">
-                      <button type="button" class="btn btn-default">
+                      <button type="button" class="btn btn-default" id="search">
                         <i class="fas fa-search"></i>
                       </button>
                     </div>
                   </div>
                 </div>
+                <!-- /.검색 영역 -->
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
@@ -116,6 +117,7 @@
                       <th>할인가</th>
                     </tr>
                   </thead>
+                  <!-- 리스트 생성영역 -->
                   <tbody>
                   	<%
                   	int num = pm.getNum();
@@ -134,6 +136,7 @@
                   	</tr>
 										<%}%>
                   </tbody>
+                  <!-- /.리스트 생성영역 -->
                 </table>
                 <!-- paging 영역 -->
                 <div class="card-footer clearfix">
@@ -177,7 +180,21 @@
 	<!-- Footer Link -->
 	<%@ include file="/admin/inc/footer_link.jsp"%>
 </body>
-<script type="text/babel">
+<script type="text/javascript">
+	function search(){
+		$.ajax({
+			type: "GET",
+			url: "/admin/product/list.jsp?category="+ $("#category").val() + "&keyword=" + $("#keyword").val(),
+			success: function(result, status, xhr){
+				//여기에 어떤 동작을 해야하는지 고민 필요
+			}
+		});
+	}
 
+	$(function(){
+		$("#search").on("click", function(){
+			search();
+		});
+	});
 </script>
 </html>
