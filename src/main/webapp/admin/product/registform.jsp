@@ -238,7 +238,7 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 			}
 
 			$.ajax({
-				url: "/admin/product/regist2.jsp",
+				url: "/admin/product/regist.jsp",
 				type: "POST",
 				processData: false,
 				contentType: false,

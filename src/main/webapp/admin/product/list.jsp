@@ -86,11 +86,17 @@
                 <h3 class="card-title">전체 상품수 : <%=list.size() %>개</h3>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                  <div class="input-group input-group-sm" style="width: 300px;">
+                  	<select class="form-control float-right" name="category">
+                  		<option value="0">선택</option>
+                  		<option value="catogory">카테고리</option>
+                  		<option value="product_name">상품명</option>
+                  		<option value="brand">브랜드</option>
+                  	</select>
+                    <input type="text" name="keyword" class="form-control float-right" placeholder="Search">
 
                     <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
+                      <button type="button" class="btn btn-default">
                         <i class="fas fa-search"></i>
                       </button>
                     </div>
