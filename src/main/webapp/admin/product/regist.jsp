@@ -167,4 +167,6 @@
 		//응답정보 보내기
 		Gson gson = new Gson();
 		String result = gson.toJson(msg);
+		
+		out.print(msg);
 %>

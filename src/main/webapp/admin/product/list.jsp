@@ -17,6 +17,7 @@
 	SqlSession sqlSession = mybatisConfig.getSqlSession();
 	productDAO.setSession(sqlSession);
 	
+	//검색 카테고리 및 키워드 정보 저장
 	String category = request.getParameter("category");
 	String keyword = request.getParameter("keyword");
 	HashMap<String, String> map = new HashMap();
