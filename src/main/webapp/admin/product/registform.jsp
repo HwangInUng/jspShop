@@ -187,8 +187,8 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 	<%@ include file="/admin/inc/footer_link.jsp"%>
 	
 	<script type="text/babel">
+		let tag = [];
 		let root;
-		let flag = true;
 		let fileList = [];
 
 		function triggerFile(){
@@ -249,22 +249,14 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 			});
 		}
 
-		//남아있는 리액트 라이브러리 컴포넌트 초기화
-		function removeComponent(){
-			for(let i = 0; i < fileList.length; i++){
-				if(!flag){
-					root.unmount();
-				}
-			}
-		}
-
 		// 이미지 삭제
 		function removeImg(e, file){
-			flag = true; //unmount()를 실행하는 논리값
 			$(e.target).parent().parent().remove();
 
 			let index = fileList.indexOf(file); //객체(인스턴스)의 주소값을 비교
 			fileList.splice(index ,1);
+			tag.splice(index, 1);
+			root.render(tag);
 		}
 
 		// 선택한 이미지 생성(리액트 컴포넌트)
@@ -281,8 +273,8 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 
 		// 선택한 파일 미리보기
 		function previewImg(){
-			//리액트 컴포넌트를 누적할 배열
-			let tag = [];
+			//리액트 컴포넌트 저장 배열 초기화
+			tag = [];
 
 			for(let i = 0; i < fileList.length; i++){
 				let reader = new FileReader();
@@ -341,9 +333,8 @@ String[] colorList = {"베이지", "네이비", "브라운", "블랙"};
 			});
 			
 			$("#file").on("change", function(){
-				removeComponent();
-
 				fileList = [];
+				
 				for(let i = 0; i < this.files.length; i++){
 					//readonly 배열에서 객체(파일)가 하나씩 저장
 					fileList.push(this.files[i]);
