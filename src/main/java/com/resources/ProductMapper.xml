@@ -8,8 +8,12 @@
 		<result column="price" property="price" />
 		<result column="discount" property="discount" />
 		<result column="detail" property="detail" />
-		<!-- <collection column="product_idx" javaType="java.util.List" ofType="Color" property="colorList" select="Color.selectAll"/> <collection column="product_idx" javaType="java.util.List" ofType="Psize" property="psizeList" select="Psize.selectAll"/> <collection column="product_idx" javaType="java.util.List" ofType="Pimg" property="pimgList" select="Pimg.selectAll"/> -->
+		
 		<association column="category_idx" property="category" select="Category.selectName" />
+		
+		<collection column="product_idx" javaType="java.util.List" ofType="Color" property="colorList" select="Color.selectAll" />
+		<collection column="product_idx" javaType="java.util.List" ofType="Psize" property="psizeList" select="Psize.selectAll" />
+		<collection column="product_idx" javaType="java.util.List" ofType="Pimg" property="pimgList" select="Pimg.selectAll" />
 	</resultMap>
 
 	<insert id="insert" parameterType="Product">
@@ -20,6 +24,7 @@
 		</selectKey>
 	</insert>
 
+	<!-- 모든 상품조회 -->
 	<select id="selectAll" resultMap="productMap">
 		select * from product order by product_idx desc
 	</select>
@@ -27,5 +32,9 @@
 	<!--검색내용이 있는 경우에만 실행 -->
 	<select id="selectBySearch" resultMap="productMap" parameterType="java.util.Map">
 		select * from product where ${category} like '%${keyword}%'
+	</select>
+
+	<select id="selectByCategory" resultMap="productMap" parameterType="int">
+		select * from product where category_idx=#{category_idx}
 	</select>
 </mapper>

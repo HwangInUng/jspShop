@@ -3,14 +3,6 @@
 <%@page import="com.jspshop.repository.CategoryDAO"%>
 <%@page import="com.jspshop.mybatis.MybatisConfig"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
-<!-- 카테고리 조회 -->
-<%!
-	CategoryDAO categoryDAO = new CategoryDAO();
-%>
-
-<%
-	List<Category> categoryList = categoryDAO.selectAll();
-%>
 
 <!DOCTYPE html>
 <html lang="zxx">

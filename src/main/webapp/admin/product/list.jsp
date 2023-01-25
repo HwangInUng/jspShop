@@ -203,3 +203,6 @@
 	});
 </script>
 </html>
+<%
+	mybatisConfig.release(sqlSession);
+%>
