@@ -25,9 +25,13 @@ public class ProductDAO {
 	}
 	
 	//상품 리스트 전체 호출
-	public List selectAll(HashMap<String, String> map) {
+	public List selectAll() {
+		return session.selectList("Product.selectAll");
+	}
+	// 검색한 기능만 출력
+	public List selectBySearch(HashMap<String, String> map) {
 		System.out.println("넘어온 category : " + map.get("category"));
 		System.out.println("넘어온 검색어 : " + map.get("keyword"));
-		return session.selectList("Product.selectAll", map);
+		return session.selectList("Product.selectBySearch", map);
 	}
 }

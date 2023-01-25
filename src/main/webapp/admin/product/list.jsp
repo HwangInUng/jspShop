@@ -24,7 +24,12 @@
 	map.put("category", category);
 	map.put("keyword", keyword);
 	
-	List<Product> list = productDAO.selectAll(map);
+	List<Product> list = null;
+	if(keyword != null){
+		list = productDAO.selectBySearch(map);
+	} else{
+		list = productDAO.selectAll();
+	}
 	pm.init(list, request);
 %>
 
@@ -88,20 +93,21 @@
 								
 								<!-- 검색 영역 -->
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 300px;">
-                  	<select class="form-control float-right" id="category">
-                  		<option value="0">선택</option>
-                  		<option value="product_name">상품명</option>
-                  		<option value="brand">브랜드</option>
-                  	</select>
-                    <input type="text" id="keyword" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="button" class="btn btn-default" id="search">
-                        <i class="fas fa-search"></i>
-                      </button>
-                    </div>
-                  </div>
+                  <form class="form-group" id="registForm">
+                  	<div class="input-group input-group-sm" style="width: 300px;">
+	                  	<select class="form-control float-right" name="category">
+	                  		<option value="0">선택</option>
+	                  		<option value="product_name">상품명</option>
+	                  		<option value="brand">브랜드</option>
+	                  	</select>
+	                    <input type="text" name="keyword" class="form-control float-right" placeholder="Search">
+                   	 <div class="input-group-append">
+                   	   <button type="button" class="btn btn-default" id="search">
+                   	     <i class="fas fa-search"></i>
+                   	   </button>
+                  	  </div>
+	                	</div>
+									</form>
                 </div>
                 <!-- /.검색 영역 -->
               </div>
@@ -182,19 +188,17 @@
 	<%@ include file="/admin/inc/footer_link.jsp"%>
 </body>
 <script type="text/javascript">
-	function search(){
-		$.ajax({
-			type: "GET",
-			url: "/admin/product/list.jsp?category="+ $("#category").val() + "&keyword=" + $("#keyword").val(),
-			success: function(result, status, xhr){
-				//여기에 어떤 동작을 해야하는지 고민 필요
-			}
+	function getListBySearch(){
+		$("#registForm").attr({
+			type: "POST",
+			url: "/admin/product/list.jsp",
 		});
+		$("#registForm").send();
 	}
 
 	$(function(){
 		$("#search").on("click", function(){
-			search();
+			getListBySearch();
 		});
 	});
 </script>
