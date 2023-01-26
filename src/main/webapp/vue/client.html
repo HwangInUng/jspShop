@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Client</title>
   <!-- Vue script -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
   <!-- jQeury script -->
@@ -18,55 +19,55 @@
 </head>
 
 <body>
-  <div id="app1" class="container">
-    <button @click="setFlag">showHide</button>
-    <mytable v-if="flag"></mytable>
-  </div>
-</body>
-<script>
-  // 컴포넌트 생성
-  const BoardTable = {
-    template: `
+  <div class="container">
+    <button class="btn btn-dark" id="bt_load">불러오기</button>
     <table class="table">
       <thead>
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
+          <th>category_idx</th>
+          <th>category_name</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
+      <tbody id="tbody">
+        <tr v-for="category in categoryList">
+          <td>{{category.category_idx}}</td>
+          <td>{{category.category_name}}</td>
         </tr>
       </tbody>
     </table>
-    `
-  }
+  </div>
+</body>
+
+<script type="text/javascript">
+  let tbody;
 
   function init() {
-    const app1 = new Vue({
-      el: "#app1",
-      //UI 컴포넌트 등록
-      components:{
-        "mytable": BoardTable
-      },
-      data:{
-        flag:true
-      },
-      methods:{
-        setFlag:function(){
-          this.flag = !this.flag;
-        }
+    tbody = new Vue({
+      el: "#tbody",
+      data: {
+        count: 5,
+        categoryList: []
+      }
+    });
+  }
+
+  function getCategoryList(){
+    $.ajax({
+      type:"GET",
+      url:"/vue/category.jsp",
+      success:function(result, status, xhr){
+        tbody.categoryList=result;
       }
     });
   }
 
   $(function () {
+    $("#bt_load").on("click", ()=>{
+      getCategoryList();
+    });
+
     init();
-  });  
+  });
 </script>
 
 </html>

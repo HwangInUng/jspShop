@@ -1,7 +1,3 @@
-<%@page import="com.jspshop.domain.Category"%>
-<%@page import="java.util.List"%>
-<%@page import="com.jspshop.repository.CategoryDAO"%>
-<%@page import="com.jspshop.mybatis.MybatisConfig"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <!DOCTYPE html>
