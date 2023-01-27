@@ -14,6 +14,10 @@ public class ProductDAO {
 	public void setSession(SqlSession session) {
 		this.session = session;
 	}
+	
+	public Product selseByCart(int product_idx) {
+		return session.selectOne("Product.selectByCart", product_idx);
+	}
 
 	// 예외처리가 아닌 호출자에게 전달
 	public void insert(Product product) throws ProductException {

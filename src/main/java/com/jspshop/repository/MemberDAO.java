@@ -14,6 +14,15 @@ public class MemberDAO {
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	// 로그인 시 회원정보 체크
+	public Member selectByLogin(Member accessMember) throws MemberException{
+		Member member = sqlSession.selectOne("Member.selectByLogin", accessMember);
+		if(member == null) {
+			throw new MemberException("회원정보가 일치하지 않습니다.");
+		}
+		return member;
+	}
 
 	// 회원 1명 삭제
 	public void delete(int member_idx) {

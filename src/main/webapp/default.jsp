@@ -240,7 +240,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-1.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-1.jpg">
                                     <div class="label new">New</div>
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -263,7 +263,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-2.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-2.jpg">
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
@@ -285,7 +285,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-3.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-3.jpg">
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
@@ -307,7 +307,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-4.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-4.jpg">
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
@@ -329,7 +329,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-5.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-5.jpg">
                                     <div class="label">Sale</div>
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-5.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -352,7 +352,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-6.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-6.jpg">
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-6.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
@@ -374,7 +374,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-7.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-7.jpg">
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-7.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
@@ -396,7 +396,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-8.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-8.jpg">
                                     <div class="label stockout stockblue">Out Of Stock</div>
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-8.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
@@ -419,7 +419,7 @@
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="img/shop/shop-9.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="/img/shop/shop-9.jpg">
                                     <div class="label">Sale</div>
                                     <ul class="product__hover">
                                         <li><a href="img/shop/shop-9.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>

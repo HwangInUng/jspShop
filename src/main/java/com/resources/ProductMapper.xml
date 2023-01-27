@@ -15,7 +15,11 @@
 		<collection column="product_idx" javaType="java.util.List" ofType="Psize" property="psizeList" select="Psize.selectAll" />
 		<collection column="product_idx" javaType="java.util.List" ofType="Pimg" property="pimgList" select="Pimg.selectAll" />
 	</resultMap>
-
+	
+	<select id="selectByCart" resultMap="productMap" parameterType="int">
+		select * from product where product_idx=#{product_idx}
+	</select>
+	
 	<insert id="insert" parameterType="Product">
 		insert into product(category_idx, product_name, brand, price, discount, detail)
 		values(#{category.category_idx}, #{product_name}, #{brand}, #{price}, #{discount}, #{detail})

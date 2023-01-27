@@ -263,6 +263,9 @@
 	
 	// 상품을 장바구니에 담기(비동기 요청)
 	function addCart(product_idx){
+		<%if(session.getAttribute("member") == null){%>
+			alert("로그인이 필요한 서비스입니다.");
+		<%} else{%>
 		$.ajax({
 			url:"/payment/cart.jsp?product_idx=" + product_idx,
 			type:"GET",
@@ -270,6 +273,7 @@
 				alert(result);
 			}
 		});
+		<%}%>
 	}
 	
 	$(function(){
